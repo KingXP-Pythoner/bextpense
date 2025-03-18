@@ -1,0 +1,58 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md.
+            "name": ".NET Core Launch (web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/netcore/Bextpense/bin/Debug/net9.0/Bextpense.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/netcore/Bextpense",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        },
+        {
+            "name": "netcorebg",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/netcore/Bextpense/Bextpense/bin/Debug/net9.0/Bextpense.dll",
+            "args": ["--urls=http://localhost:5190"],
+            "cwd": "${workspaceFolder}/netcore/Bextpense/Bextpense",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceFolder}/netcore/Bextpense/Bextpense",
+                "pipeProgram": "powershell",
+                "pipeArgs": ["-Command"],
+                "debuggerPath": "D:\\netcoredebugger\\netcoredbg\\netcoredbg.exe",
+                "debuggerArgs": ["--interpreter=vscode"],
+                "quoteArgs": true
+            },
+            "env": {
+                "DOTNET_ENVIRONMENT": "Development"
+            },
+            "logging": {
+                "moduleLoad": false,
+                "diagnostics": {
+                    "protocolMessages": true,
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "editor.defaultFormatter": "csharpier.csharpier-vscode",
+    "emmet.excludeLanguages": [
+        "csharp"
+    ],
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable"
+}
