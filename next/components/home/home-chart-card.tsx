@@ -5,7 +5,7 @@ import { Circle } from 'lucide-react'
 type HomeChartCardProps = {
     title: string
     description: string
-    children: React.ReactNode
+    chart: React.ReactNode
 }
 
 const LegendDisplaySlot = ({children}: {children: React.ReactNode}) => {
@@ -25,9 +25,9 @@ const LegendBadge = ({color, label}: {color: string, label: string}) => {
         </div>
     )
 }
-const HomeChartCard = ({title, description, children: chart}: HomeChartCardProps) => {
+const HomeChartCard = ({title, description, chart}: HomeChartCardProps) => {
   return (
-    <Card className='shadow-none rounded-none'>
+    <Card className='shadow-none rounded-none bg-transparent'>
         <CardHeader className='flex flex-row justify-between'>
             <CardTitle>
                 {title}

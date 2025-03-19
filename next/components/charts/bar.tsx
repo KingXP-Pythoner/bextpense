@@ -1,15 +1,21 @@
 'use client'
-import Highcharts from 'highcharts'
-import 'highcharts/modules/exporting'
-import HighchartsReact from 'highcharts-react-official'
-
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 
 export const defaultOptions: Highcharts.Options = {
     chart: {
         type: 'column',
-        backgroundColor: '#000000',
+        backgroundColor: 'transparent',
+        className: 'bg-background',
+        spacingBottom: 20,
+        marginBottom: 60,
         style: {
-            fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, sans-serif'
+            fontFamily: 'var(--font-sans)'
+        }
+    },
+    navigation: {
+        buttonOptions: {
+            enabled: false
         }
     },
     title: {
@@ -17,15 +23,20 @@ export const defaultOptions: Highcharts.Options = {
     },
     xAxis: {
         categories: [
-            'Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'May 2025', 
-            'Jun 2025', 'Jul 2025', 'Aug 2025', 'Sep 2025', 'Oct 2025',
-            'Nov 2025', 'Dec 2025'
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 
+            'Jun', 'Jul', 'Aug', 'Sep', 'Oct',
+            'Nov', 'Dec'
         ],
-        lineColor: '#333333',
+        lineColor: 'var(--color-border)',
         labels: {
+            formatter: function(): string {
+                return this.pos === 0 || this.pos === 11 ? String(this.value) : '';
+            },
             style: {
-                color: '#999999'
-            }
+                color: 'var(--color-muted-foreground)'
+            },
+            rotation: 0,
+            y: 20
         }
     },
     yAxis: {
@@ -37,16 +48,16 @@ export const defaultOptions: Highcharts.Options = {
                 return '$' + (this.value as number / 1000000).toFixed(1) + 'M';
             },
             style: {
-                color: '#999999'
+                color: 'var(--color-muted-foreground)'
             }
         },
-        gridLineColor: '#333333',
+        gridLineColor: 'var(--color-border)',
         gridLineDashStyle: 'Dot'
     },
     plotOptions: {
         column: {
             borderWidth: 0,
-            color: '#A855F7',
+            color: 'var(--color-primary)',
             grouping: false
         }
     },
@@ -54,12 +65,12 @@ export const defaultOptions: Highcharts.Options = {
         type: 'column',
         name: 'Background',
         data: [0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5],
-        color: '#333333'
+        color: 'var(--color-muted)'
     }, {
         type: 'column',
         name: 'Value',
         data: [0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5],
-        color: '#A855F7'
+        color: 'var(--color-primary)'
     }],
     legend: {
         enabled: false
@@ -69,10 +80,10 @@ export const defaultOptions: Highcharts.Options = {
     },
     tooltip: {
         shared: true,
-        backgroundColor: '#1a1a1a',
-        borderColor: '#333333',
+        backgroundColor: 'var(--color-popover)',
+        borderColor: 'var(--color-border)',
         style: {
-            color: '#ffffff'
+            color: 'var(--color-popover-foreground)'
         },
         formatter: function(this: any) {
             if (!this.points) return '';
