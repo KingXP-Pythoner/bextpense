@@ -28,6 +28,7 @@ import {
 } from "@/components/shared/ui/sidebar";
 import Link from "next/link";
 import { appSidebarData } from "@/constants/app-sidebar-data";
+import { ModeToggle } from "./theme-toggle";
 
 
 const AppSidebarNavigation = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
@@ -63,6 +64,7 @@ const AppSidebarNavigation = ({ ...props }: React.ComponentProps<typeof Sidebar>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 })}
+          <ModeToggle />
               </SidebarMenu>
       </SidebarContent>
       <SidebarFooter>
