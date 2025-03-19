@@ -6,7 +6,7 @@ export const defaultOptions: Highcharts.Options = {
 	chart: {
 		type: "column",
 		backgroundColor: "transparent",
-		className: "bg-background",
+		className: "bg-background w-full",
 		spacingBottom: 20,
 		marginBottom: 60,
 		style: {
@@ -52,9 +52,12 @@ export const defaultOptions: Highcharts.Options = {
 		title: {
 			text: undefined,
 		},
+		min: 0,
+		max: 1.6,
+		tickInterval: 0.4,
 		labels: {
 			formatter: function () {
-				return "$" + ((this.value as number) / 1000000).toFixed(1) + "M";
+				return "$" + ((this.value as number) / 1).toFixed(1) + "M";
 			},
 			style: {
 				color: "var(--color-muted-foreground)",
@@ -114,7 +117,11 @@ type BarChartProps = {
 };
 
 const VerticalColumnBarChart = ({ options }: BarChartProps) => {
-	return <HighchartsReact highcharts={Highcharts} options={options} />;
+	return (
+	
+			<HighchartsReact highcharts={Highcharts} options={options} />
+	
+	);
 };
 
 export { VerticalColumnBarChart };

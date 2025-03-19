@@ -3,7 +3,11 @@
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
-
+.highcharts-container,
+.highcharts-container svg {
+  width: 100% !important;
+  height: 100% !important;
+}
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);

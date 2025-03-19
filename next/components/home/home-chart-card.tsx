@@ -28,7 +28,7 @@ const HomeChartCard = ({ title, description, chart }: HomeChartCardProps) => {
 	return (
 		<Card className="shadow-none rounded-none bg-transparent">
 			<CardHeader className="flex flex-row justify-between">
-				<CardTitle>{title}</CardTitle>
+				<CardTitle className="text-lg">{title}</CardTitle>
 				<LegendDisplaySlot>
 					<LegendBadge color="red" label="Red" />
 					<LegendBadge color="blue" label="Blue" />
