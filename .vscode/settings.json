@@ -3,6 +3,7 @@
     "emmet.excludeLanguages": [
         "csharp"
     ],
+  "typescript.tsdk": "next/node_modules/typescript/lib",
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "modificationsIfAvailable"
 }
