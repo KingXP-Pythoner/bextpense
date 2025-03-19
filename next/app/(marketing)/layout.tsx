@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { RootLayout } from "../root-layout";
+import { RootLayout } from "../../components/shared/root-layout";
 
 export const metadata: Metadata = {
   title: "Bextpense Tracker",

@@ -6,12 +6,12 @@ import { SearchIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-} from "@/components/ui/dialog"
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/shared/ui/dialog"
 
 function Command({
   className,
