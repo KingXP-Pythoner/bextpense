@@ -1,5 +1,8 @@
 "use client";
-import { toIncomeVsExpensesChart, toRecurringRevenueChart } from "@/lib/transformers/chart-transformers";
+import {
+	toIncomeVsExpensesChart,
+	toRecurringRevenueChart,
+} from "@/lib/transformers/chart-transformers";
 import { toRecurringExpensesChart } from "@/lib/transformers/chart-transformers";
 import { toSavingsChart } from "@/lib/transformers/chart-transformers";
 import { TTransactionOverviewResponse } from "@/lib/types/transaction-overview";
@@ -123,14 +126,18 @@ type BarChartProps = {
 const chartTitleToTransformer = {
 	"Recurring Revenue": toRecurringRevenueChart,
 	"Recurring Expenses": toRecurringExpensesChart,
-	"Savings": toSavingsChart,
+	Savings: toSavingsChart,
 	"Revenue vs Expenses": toIncomeVsExpensesChart,
-}
-const VerticalColumnBarChart = ({ title,  data}: BarChartProps) => {
-	const {  chartData } = useChartsDataView();
-	const transformer = chartTitleToTransformer[title as keyof typeof chartTitleToTransformer];
+};
+const VerticalColumnBarChart = ({ title, data }: BarChartProps) => {
+	const { chartData } = useChartsDataView();
+	const transformer =
+		chartTitleToTransformer[title as keyof typeof chartTitleToTransformer];
 	return (
-			<HighchartsReact highcharts={Highcharts} options={transformer(data ?? chartData)} />
+		<HighchartsReact
+			highcharts={Highcharts}
+			options={transformer(data ?? chartData)}
+		/>
 	);
 };
 

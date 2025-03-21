@@ -1,28 +1,32 @@
-import type { Option } from "@/lib/types/data-table"
-import type { Column } from "@tanstack/react-table"
-import { Check, PlusCircle } from "lucide-react"
+import type { Option } from "@/lib/types/data-table";
+import type { Column } from "@tanstack/react-table";
+import { Check, PlusCircle } from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import { Badge } from "@/components/shared/ui/badge"
-import { Button } from "@/components/shared/ui/button"
+import { cn } from "@/lib/utils";
+import { Badge } from "@/components/shared/ui/badge";
+import { Button } from "@/components/shared/ui/button";
 import {
-    Command,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-    CommandSeparator,
-} from "@/components/shared/ui/command"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/shared/ui/popover"
-import { Separator } from "@/components/shared/ui/separator"
+	Command,
+	CommandEmpty,
+	CommandGroup,
+	CommandInput,
+	CommandItem,
+	CommandList,
+	CommandSeparator,
+} from "@/components/shared/ui/command";
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "@/components/shared/ui/popover";
+import { Separator } from "@/components/shared/ui/separator";
 
 interface DataTableFacetedFilterProps<TData, TValue> {
-	column?: Column<TData, TValue>
-	title?: string
-	options: Option[]
-	localSelectedValues: Set<string>
-	setLocalSelectedValues: (values: Set<string>) => void
+	column?: Column<TData, TValue>;
+	title?: string;
+	options: Option[];
+	localSelectedValues: Set<string>;
+	setLocalSelectedValues: (values: Set<string>) => void;
 }
 
 export function DataTableFacetedFilter<TData, TValue>({
@@ -40,11 +44,17 @@ export function DataTableFacetedFilter<TData, TValue>({
 
 					<div className="w-[34px] flex items-center">
 						<Separator orientation="vertical" className="mx-2 h-4" />
-						<Badge variant="secondary" className="rounded-sm px-1 font-normal lg:hidden">
+						<Badge
+							variant="secondary"
+							className="rounded-sm px-1 font-normal lg:hidden"
+						>
 							{localSelectedValues.size}
 						</Badge>
 						<div className="hidden space-x-1 lg:flex">
-							<Badge variant="secondary" className="rounded-sm px-1.5 aspect-square shrink-0 font-normal">
+							<Badge
+								variant="secondary"
+								className="rounded-sm px-1.5 aspect-square shrink-0 font-normal"
+							>
 								{localSelectedValues.size}
 							</Badge>
 						</div>
@@ -62,14 +72,14 @@ export function DataTableFacetedFilter<TData, TValue>({
 									<CommandItem
 										key={option.value}
 										onSelect={() => {
-											const isSelected = localSelectedValues.has(option.value)
-											const next = new Set(localSelectedValues)
+											const isSelected = localSelectedValues.has(option.value);
+											const next = new Set(localSelectedValues);
 											if (isSelected) {
-												next.delete(option.value)
+												next.delete(option.value);
 											} else {
-												next.add(option.value)
+												next.add(option.value);
 											}
-											setLocalSelectedValues(next)
+											setLocalSelectedValues(next);
 											// Update URL state in background
 										}}
 									>
@@ -78,12 +88,17 @@ export function DataTableFacetedFilter<TData, TValue>({
 												"mr-2 flex size-3.5 items-center justify-center rounded-sm border border-primary",
 												localSelectedValues.has(option.value)
 													? "bg-primary text-primary-foreground"
-													: "opacity-50 [&_svg]:invisible"
+													: "opacity-50 [&_svg]:invisible",
 											)}
 										>
 											<Check className="size-3.5" aria-hidden="true" />
 										</div>
-										{option.icon && <option.icon className="mr-2 size-3.5 text-muted-foreground" aria-hidden="true" />}
+										{option.icon && (
+											<option.icon
+												className="mr-2 size-3.5 text-muted-foreground"
+												aria-hidden="true"
+											/>
+										)}
 										<span>{option.label}</span>
 										{option.count && (
 											<span className="ml-auto flex size-3.5 items-center justify-center font-mono text-xs">
@@ -91,7 +106,7 @@ export function DataTableFacetedFilter<TData, TValue>({
 											</span>
 										)}
 									</CommandItem>
-								)
+								);
 							})}
 						</CommandGroup>
 						{localSelectedValues.size > 0 && (
@@ -100,7 +115,7 @@ export function DataTableFacetedFilter<TData, TValue>({
 								<CommandGroup>
 									<CommandItem
 										onSelect={() => {
-											setLocalSelectedValues(new Set([]))
+											setLocalSelectedValues(new Set([]));
 										}}
 										className="justify-center text-center"
 									>
@@ -113,5 +128,5 @@ export function DataTableFacetedFilter<TData, TValue>({
 				</Command>
 			</PopoverContent>
 		</Popover>
-	)
+	);
 }

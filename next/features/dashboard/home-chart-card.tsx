@@ -1,5 +1,10 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/shared/ui/card";
+import {
+	Card,
+	CardContent,
+	CardHeader,
+	CardTitle,
+} from "@/components/shared/ui/card";
 import { Circle } from "lucide-react";
 import { ChartDataNumber, ChartGrowthPercentage } from "./chart-numbers";
 import { toSentenceCase } from "@/lib/utils/format";
@@ -31,35 +36,37 @@ const LegendBadge = ({ color, label }: { color: string; label: string }) => {
 	);
 };
 
-const HomeChartCard = ({ 
-	title, 
-	chart, 
-	legend,
-}: HomeChartCardProps) => {
-
+const HomeChartCard = ({ title, chart, legend }: HomeChartCardProps) => {
 	return (
 		<Card className="shadow-none min-h-[540px] rounded-none bg-transparent">
 			<CardHeader className="flex flex-row items-center justify-between">
 				<div className="flex flex-col gap-1">
-					<CardTitle className="text-lg capitalize">{toSentenceCase(title)}</CardTitle>
-				
-						{title !== "Revenue vs Expenses" && <div className="flex items-center gap-2">
+					<CardTitle className="text-lg capitalize">
+						{toSentenceCase(title)}
+					</CardTitle>
+
+					{title !== "Revenue vs Expenses" && (
+						<div className="flex items-center gap-2">
 							<span className="text-2xl font-semibold">
-								<ChartDataNumber title={title} format={{
-									style: 'currency',
-									currency: 'GBP',
-									trailingZeroDisplay: 'stripIfInteger',
-								}} />
+								<ChartDataNumber
+									title={title}
+									format={{
+										style: "currency",
+										currency: "GBP",
+										trailingZeroDisplay: "stripIfInteger",
+									}}
+								/>
 							</span>
-							<ChartGrowthPercentage   title={title} isExpense={title === "Recurring Expenses"} />
-						</div>}
-					
+							<ChartGrowthPercentage
+								title={title}
+								isExpense={title === "Recurring Expenses"}
+							/>
+						</div>
+					)}
 				</div>
 				{legend && (
 					<div className="flex justify-end">
-						<LegendDisplaySlot>
-							{legend}
-						</LegendDisplaySlot>
+						<LegendDisplaySlot>{legend}</LegendDisplaySlot>
 					</div>
 				)}
 			</CardHeader>
@@ -68,6 +75,5 @@ const HomeChartCard = ({
 	);
 };
 
-
 export { LegendBadge };
-export default HomeChartCard; 
+export default HomeChartCard;

@@ -1,19 +1,29 @@
-import * as React from "react"
-import { flexRender, type Table as TanstackTable } from "@tanstack/react-table"
+import * as React from "react";
+import { flexRender, type Table as TanstackTable } from "@tanstack/react-table";
 
-import { getCommonPinningStyles } from "@/lib/data-table/styles"
-import { cn } from "@/lib/utils"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/shared/ui/table"
-import { TTransaction } from "@/lib/types/transaction"
+import { getCommonPinningStyles } from "@/lib/data-table/styles";
+import { cn } from "@/lib/utils";
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@/components/shared/ui/table";
+import { TTransaction } from "@/lib/types/transaction";
 
 interface DataTableProps<TData> extends React.HTMLAttributes<HTMLDivElement> {
 	/**
 	 * The table instance returned from useDataTable hook with pagination, sorting, filtering, etc.
 	 * @type TanstackTable<TData>
 	 */
-	table: TanstackTable<TData>
+	table: TanstackTable<TData>;
 }
-export function DataTable<TData = TTransaction>({ table, className }: DataTableProps<TData>) {
+export function DataTable<TData = TTransaction>({
+	table,
+	className,
+}: DataTableProps<TData>) {
 	return (
 		<Table className="rounded-md isolate relative">
 			<TableHeader className="bg-accent">
@@ -34,9 +44,14 @@ export function DataTable<TData = TTransaction>({ table, className }: DataTableP
 										"max-w-[64px]": header.column.id === "select",
 									})}
 								>
-									{header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+									{header.isPlaceholder
+										? null
+										: flexRender(
+												header.column.columnDef.header,
+												header.getContext(),
+											)}
 								</TableHead>
-							)
+							);
 						})}
 					</TableRow>
 				))}
@@ -44,7 +59,11 @@ export function DataTable<TData = TTransaction>({ table, className }: DataTableP
 			<TableBody>
 				{table.getRowModel().rows?.length ? (
 					table.getRowModel().rows.map((row) => (
-						<TableRow className="group/table-row" key={row.id} data-state={row.getIsSelected() && "selected"}>
+						<TableRow
+							className="group/table-row"
+							key={row.id}
+							data-state={row.getIsSelected() && "selected"}
+						>
 							{row.getVisibleCells().map((cell) => (
 								<TableCell
 									key={cell.id}
@@ -75,5 +94,5 @@ export function DataTable<TData = TTransaction>({ table, className }: DataTableP
 				)}
 			</TableBody>
 		</Table>
-	)
+	);
 }

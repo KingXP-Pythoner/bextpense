@@ -4,16 +4,16 @@ import * as React from "react";
 import { Command } from "lucide-react";
 
 import {
-    Sidebar,
-    SidebarContent,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarInset,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    SidebarProvider,
-    SidebarTrigger,
+	Sidebar,
+	SidebarContent,
+	SidebarFooter,
+	SidebarHeader,
+	SidebarInset,
+	SidebarMenu,
+	SidebarMenuButton,
+	SidebarMenuItem,
+	SidebarProvider,
+	SidebarTrigger,
 } from "@/components/shared/ui/sidebar";
 import Link from "next/link";
 import { appSidebarData } from "@/constants/app-sidebar-data";
@@ -49,8 +49,8 @@ const AppSidebarNavigation = ({
 						return (
 							<SidebarMenuItem key={item.title}>
 								<SidebarMenuButton tooltip={item.title} asChild>
-								<Link href={item.url}>
-									<Icon className="size-4 p-0 shrink-0" />
+									<Link href={item.url}>
+										<Icon className="size-4 p-0 shrink-0" />
 										{item.title}
 									</Link>
 								</SidebarMenuButton>
@@ -73,7 +73,7 @@ export const AppSidebar = ({ children }: { children: React.ReactNode }) => {
 					<div className="flex items-center gap-2 px-4 w-full">
 						<SidebarTrigger className="-ml-1" />
 						<div className="w-full flex justify-end">
-						<ModeToggle />
+							<ModeToggle />
 						</div>
 					</div>
 				</header>
@@ -85,4 +85,4 @@ export const AppSidebar = ({ children }: { children: React.ReactNode }) => {
 			</SidebarInset>
 		</SidebarProvider>
 	);
-}; 
+};

@@ -1,11 +1,13 @@
+import { VerticalColumnBarChart } from "@/components/charts/bar";
 import {
-	VerticalColumnBarChart
-} from "@/components/charts/bar";
-import { HomeChartCard, LegendBadge, TimeRangeToggle } from "@/features/dashboard";
+	HomeChartCard,
+	LegendBadge,
+	TimeRangeToggle,
+} from "@/features/dashboard";
 import { TransactionOverviewProvider } from "@/context/charts-data-view";
 import { fetchTransactionOverview } from "@/fetchers/fetch-transaction-overview";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 export default async function Page() {
 	const data = await fetchTransactionOverview();
 
@@ -21,8 +23,10 @@ export default async function Page() {
 							title="Recurring Revenue"
 							currentValue={data.recurringRevenue.currentValue}
 							growthPercentage={data.recurringRevenue.growthPercentage}
-							chart={<VerticalColumnBarChart title="Recurring Revenue"  />}
-							legend={<LegendBadge color="var(--color-primary)" label="Income" />}
+							chart={<VerticalColumnBarChart title="Recurring Revenue" />}
+							legend={
+								<LegendBadge color="var(--color-primary)" label="Income" />
+							}
 						/>
 
 						<HomeChartCard
@@ -30,24 +34,33 @@ export default async function Page() {
 							currentValue={data.recurringExpenses.currentValue}
 							growthPercentage={data.recurringExpenses.growthPercentage}
 							isExpense={true}
-							chart={<VerticalColumnBarChart title="Recurring Expenses"  />}
-							legend={<LegendBadge color="var(--color-destructive)" label="Expenses" />}
+							chart={<VerticalColumnBarChart title="Recurring Expenses" />}
+							legend={
+								<LegendBadge
+									color="var(--color-destructive)"
+									label="Expenses"
+								/>
+							}
 						/>
 						<HomeChartCard
 							title="Revenue vs Expenses"
-							chart={<VerticalColumnBarChart title="Revenue vs Expenses"  />}
-							legend={<>
-								<LegendBadge color="var(--color-primary)" label="Income" />
-								<LegendBadge color="var(--color-destructive)" label="Expenses" />
-							</>}
+							chart={<VerticalColumnBarChart title="Revenue vs Expenses" />}
+							legend={
+								<>
+									<LegendBadge color="var(--color-primary)" label="Income" />
+									<LegendBadge
+										color="var(--color-destructive)"
+										label="Expenses"
+									/>
+								</>
+							}
 						/>
 						<HomeChartCard
 							title="Savings"
 							currentValue={data.savings.currentValue}
 							growthPercentage={data.savings.growthPercentage}
-							chart={<VerticalColumnBarChart title="Savings"  />}
+							chart={<VerticalColumnBarChart title="Savings" />}
 						/>
-
 					</div>
 				</div>
 			</div>

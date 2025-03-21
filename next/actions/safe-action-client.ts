@@ -1,28 +1,28 @@
-import "server-only"
-import { createSafeActionClient } from "next-safe-action"
-import { z } from "zod"
-import { fakeAuth } from "@/lib/fake-auth"
+import "server-only";
+import { createSafeActionClient } from "next-safe-action";
+import { z } from "zod";
+import { fakeAuth } from "@/lib/fake-auth";
 class SafeActionError extends Error {}
 
 // Base client.
 export const actionClient = createSafeActionClient({
 	handleServerError: (e) => {
-		console.error("🚨 [SAFE_ACTION_SERVER_ERROR]: Unexpected server error")
+		console.error("🚨 [SAFE_ACTION_SERVER_ERROR]: Unexpected server error");
 	},
 	defineMetadataSchema: () => {
 		return z.object({
 			actionName: z.string(),
-		})
+		});
 	},
 	// Define logging middleware.
 }).use(async ({ next, clientInput, metadata }) => {
-	console.log("📝 [SAFE_ACTION_MIDDLEWARE]: Logging... ")
+	console.log("📝 [SAFE_ACTION_MIDDLEWARE]: Logging... ");
 
-	const startTime = performance.now()
-	const executionResult = await next()
-	const endTime = performance.now()
-	const inMs = endTime - startTime
-	const inSeconds = inMs / 1000
+	const startTime = performance.now();
+	const executionResult = await next();
+	const endTime = performance.now();
+	const inMs = endTime - startTime;
+	const inSeconds = inMs / 1000;
 	console.dir(
 		{
 			actionName: metadata.actionName,
@@ -31,22 +31,22 @@ export const actionClient = createSafeActionClient({
 			clientInput,
 			result: executionResult,
 		},
-		{ depth: Infinity }
-	)
+		{ depth: Infinity },
+	);
 	// And then return the result of the awaited action.
-	return executionResult
-})
+	return executionResult;
+});
 
 export const authActionClient = actionClient
 	// Define authorization middleware.
 	.use(async ({ next }) => {
-		const user = await fakeAuth()
+		const user = await fakeAuth();
 
 		if (!user) {
-			throw new Error("Session not found!")
+			throw new Error("Session not found!");
 		}
 		if (!user.userId || !user.email) {
-			throw new Error("Session is not valid!")
+			throw new Error("Session is not valid!");
 		}
 		// Return the next middleware with `userId` value in the context
 		return next({
@@ -55,6 +55,5 @@ export const authActionClient = actionClient
 				authUserName: user.name,
 				authUserEmail: user.email,
 			},
-		})
-	})
-
+		});
+	});

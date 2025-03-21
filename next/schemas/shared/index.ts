@@ -3,4 +3,4 @@
  * and don't fit exclusively within a single domain context.
  */
 
-// Currently no shared schemas defined. 
+// Currently no shared schemas defined.

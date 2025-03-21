@@ -22,7 +22,6 @@ export const HIGHCHART_DEFAULT_OPTIONS: Highcharts.Options = {
 		text: undefined,
 	},
 	xAxis: {
-	
 		lineColor: "var(--color-border)",
 		labels: {
 			formatter: function (): string {
@@ -30,11 +29,11 @@ export const HIGHCHART_DEFAULT_OPTIONS: Highcharts.Options = {
 			},
 			style: {
 				color: "var(--color-muted-foreground)",
-				textOverflow: 'none',
-				whiteSpace: 'nowrap'
+				textOverflow: "none",
+				whiteSpace: "nowrap",
 			},
 			rotation: 0,
-			overflow: 'allow'
+			overflow: "allow",
 		},
 	},
 	yAxis: {
@@ -43,7 +42,12 @@ export const HIGHCHART_DEFAULT_OPTIONS: Highcharts.Options = {
 		},
 		labels: {
 			formatter: function () {
-				return new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', minimumFractionDigits: 1, maximumFractionDigits: 1 }).format((this.value as number) / 1);
+				return new Intl.NumberFormat("en-GB", {
+					style: "currency",
+					currency: "GBP",
+					minimumFractionDigits: 1,
+					maximumFractionDigits: 1,
+				}).format((this.value as number) / 1);
 			},
 			style: {
 				color: "var(--color-muted-foreground)",
@@ -66,14 +70,13 @@ export const HIGHCHART_DEFAULT_OPTIONS: Highcharts.Options = {
 		enabled: false,
 	},
 	tooltip: {
-        shared: true,
-        useHTML: true,
-        formatter: createTooltipUI,
+		shared: true,
+		useHTML: true,
+		formatter: createTooltipUI,
 		backgroundColor: "var(--color-popover)",
 		borderColor: "var(--color-border)",
 		style: {
 			color: "var(--color-popover-foreground)",
 		},
-		
 	},
 };

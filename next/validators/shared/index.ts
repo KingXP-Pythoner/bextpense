@@ -3,4 +3,4 @@
  * Please import directly from '@/schemas/transactions' going forward.
  */
 
-// This file intentionally has no exports to discourage its use 
+// This file intentionally has no exports to discourage its use

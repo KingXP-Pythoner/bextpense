@@ -1,6 +1,5 @@
-import { type Column } from "@tanstack/react-table"
-import { Filter } from "../types/data-table"
-
+import { type Column } from "@tanstack/react-table";
+import { Filter } from "../types/data-table";
 
 /**
  * Generate common pinning styles for a table column.
@@ -19,16 +18,18 @@ export function getCommonPinningStyles<TData>({
 	column,
 	withBorder = false,
 }: {
-	column: Column<TData>
+	column: Column<TData>;
 	/**
 	 * Show box shadow between pinned and scrollable columns.
 	 * @default false
 	 */
-	withBorder?: boolean
+	withBorder?: boolean;
 }): React.CSSProperties {
-	const isPinned = column.getIsPinned()
-	const isLastLeftPinnedColumn = isPinned === "left" && column.getIsLastColumn("left")
-	const isFirstRightPinnedColumn = isPinned === "right" && column.getIsFirstColumn("right")
+	const isPinned = column.getIsPinned();
+	const isLastLeftPinnedColumn =
+		isPinned === "left" && column.getIsLastColumn("left");
+	const isFirstRightPinnedColumn =
+		isPinned === "right" && column.getIsFirstColumn("right");
 
 	return {
 		boxShadow: withBorder
@@ -44,9 +45,8 @@ export function getCommonPinningStyles<TData>({
 		position: isPinned ? "sticky" : "relative",
 		background: isPinned ? "var(--background)" : undefined,
 		// width: column.getSize(),
-	}
+	};
 }
-
 
 /**
  * Filters out invalid or empty filters from an array of filters.
@@ -60,11 +60,14 @@ export function getCommonPinningStyles<TData>({
  * @param filters - An array of Filter objects to be validated.
  * @returns A new array containing only the valid filters.
  */
-export function getValidFilters<TData>(filters: Filter<TData>[]): Filter<TData>[] {
-	return filters.filter(
-		(filter) =>
-			(Array.isArray(filter.value)
-				? filter.value.length > 0
-				: filter.value !== "" && filter.value !== null && filter.value !== undefined)
-	)
+export function getValidFilters<TData>(
+	filters: Filter<TData>[],
+): Filter<TData>[] {
+	return filters.filter((filter) =>
+		Array.isArray(filter.value)
+			? filter.value.length > 0
+			: filter.value !== "" &&
+				filter.value !== null &&
+				filter.value !== undefined,
+	);
 }

@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 .highcharts-container,
 .highcharts-container svg {
-  width: 100% !important;
-  height: 100% !important;
+	width: 100% !important;
+	height: 100% !important;
 }
 @theme inline {
 	--color-background: var(--background);
