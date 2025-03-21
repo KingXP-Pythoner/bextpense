@@ -33,7 +33,11 @@ Bextpense is engineered to streamline personal and business finance management b
 - **High Performance:** Optimized for speed with server-side caching and asynchronous data handling.
 
 ---
-
+## Issues
+Due to the tight timeline I couldn't resolve some bugs which were:
+- The table is not sorted properly. My best guess is it is probably something to do with the date management.
+- The table in general needs more work.
+- I was able to get the pdf working in time literally 7:30 am haha (clutch :) ) I didnt do thorough testing though as I had to leave for work and submit.
 ## Architecture Overview
 
 Bextpense is built on a layered architecture that separates concerns into distinct modules, ensuring that each part of the application is independently scalable and maintainable.
@@ -129,7 +133,7 @@ Both the frontend and backend require environment-specific configuration files.
 
 ```env
 NEXT_PUBLIC_DEV_MODE_FRONTEND_URL=http://localhost:3000
-NEXT_CORE_API_URL=http://localhost:5190
+CORE_API_URL=http://localhost:5190
 ```
 
 ### Backend Configuration (`/workspaces/bextpense/netcore/Bextpense/Bextpense/appsettings.Development.json`)
