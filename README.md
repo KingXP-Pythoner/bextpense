@@ -136,9 +136,7 @@ NEXT_CORE_API_URL=http://localhost:5190
 
 ```json
 {
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Database=Bextpense;User Id=sa;Password=your_password;"
-  },
+
   "Logging": {
     "LogLevel": {
       "Default": "Information",
