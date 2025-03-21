@@ -28,7 +28,7 @@ const AppSidebarNavigation = ({
 				<SidebarMenu>
 					<SidebarMenuItem>
 						<SidebarMenuButton size="lg" className="-ml-2" asChild>
-							<Link href="/app">
+							<Link prefetch href="/app">
 								<div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
 									<Command className="size-4" />
 								</div>
@@ -49,7 +49,7 @@ const AppSidebarNavigation = ({
 						return (
 							<SidebarMenuItem key={item.title}>
 								<SidebarMenuButton tooltip={item.title} asChild>
-									<Link href={item.url}>
+									<Link prefetch href={item.url}>
 										<Icon className="size-4 p-0 shrink-0" />
 										{item.title}
 									</Link>
