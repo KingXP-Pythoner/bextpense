@@ -11,8 +11,8 @@ export const appSidebarData = {
 	},
 	navMain: [
 		{
-			title: "Income",
-			url: "#",
+			title: "Transactions",
+			url: "/all-transactions",
 			icon: HandCoinsIcon,
 		},
 		{

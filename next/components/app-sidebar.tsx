@@ -2,15 +2,6 @@
 
 import * as React from "react";
 import { Command } from "lucide-react";
-import {
-	Breadcrumb,
-	BreadcrumbItem,
-	BreadcrumbLink,
-	BreadcrumbList,
-	BreadcrumbPage,
-	BreadcrumbSeparator,
-} from "@/components/shared/ui/breadcrumb";
-import { Separator } from "@/components/shared/ui/separator";
 
 import {
 	Sidebar,
@@ -37,7 +28,7 @@ const AppSidebarNavigation = ({
 				<SidebarMenu>
 					<SidebarMenuItem>
 						<SidebarMenuButton size="lg" className="-ml-2" asChild>
-							<Link href="#">
+							<Link href="/app">
 								<div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
 									<Command className="size-4" />
 								</div>
@@ -55,17 +46,17 @@ const AppSidebarNavigation = ({
 				<SidebarMenu>
 					{appSidebarData.navMain.map((item) => {
 						const Icon = item.icon;
-						console.log(item.icon);
 						return (
 							<SidebarMenuItem key={item.title}>
-								<SidebarMenuButton tooltip={item.title}>
+								<SidebarMenuButton tooltip={item.title} asChild>
+								<Link href={item.url}>
 									<Icon className="size-4 p-0 shrink-0" />
-									<Link href={item.url}>{item.title}</Link>
+										{item.title}
+									</Link>
 								</SidebarMenuButton>
 							</SidebarMenuItem>
 						);
 					})}
-					<ModeToggle />
 				</SidebarMenu>
 			</SidebarContent>
 			<SidebarFooter></SidebarFooter>
@@ -77,24 +68,13 @@ export const AppSidebar = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<SidebarProvider>
 			<AppSidebarNavigation />
-			<SidebarInset>
+			<SidebarInset className="overflow-hidden">
 				<header className="flex h-16 shrink-0 items-center gap-2">
-					<div className="flex items-center gap-2 px-4">
+					<div className="flex items-center gap-2 px-4 w-full">
 						<SidebarTrigger className="-ml-1" />
-						<Separator orientation="vertical" className="mr-2 h-4" />
-						<Breadcrumb>
-							<BreadcrumbList>
-								<BreadcrumbItem className="hidden md:block">
-									<BreadcrumbLink href="#">
-										Building Your Application
-									</BreadcrumbLink>
-								</BreadcrumbItem>
-								<BreadcrumbSeparator className="hidden md:block" />
-								<BreadcrumbItem>
-									<BreadcrumbPage>Data Fetching</BreadcrumbPage>
-								</BreadcrumbItem>
-							</BreadcrumbList>
-						</Breadcrumb>
+						<div className="w-full flex justify-end">
+						<ModeToggle />
+						</div>
 					</div>
 				</header>
 				<div className="flex flex-1 flex-col gap-4 p-4 pt-0">

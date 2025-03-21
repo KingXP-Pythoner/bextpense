@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import { ThemeProvider } from "../theme-provider";
+import { Toaster } from "./ui/sonner";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -19,6 +20,13 @@ export const RootLayout = ({
 }>) => {
 	return (
 		<html lang="en" suppressHydrationWarning>
+			<head>
+        <script
+          crossOrigin="anonymous"
+          src="//unpkg.com/react-scan/dist/auto.global.js"
+        />
+        {/* rest of your scripts go under */}
+      </head>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
@@ -29,6 +37,7 @@ export const RootLayout = ({
 					disableTransitionOnChange
 				>
 					{children}
+					<Toaster />
 				</ThemeProvider>
 			</body>
 		</html>

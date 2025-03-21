@@ -1,4 +1,9 @@
 "use client";
+import { toIncomeVsExpensesChart, toRecurringRevenueChart } from "@/lib/transformers/chart-transformers";
+import { toRecurringExpensesChart } from "@/lib/transformers/chart-transformers";
+import { toSavingsChart } from "@/lib/transformers/chart-transformers";
+import { TTransactionOverviewResponse } from "@/lib/types/transaction-overview";
+import { useChartsDataView } from "@/context/charts-data-view";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
@@ -45,7 +50,6 @@ export const defaultOptions: Highcharts.Options = {
 				color: "var(--color-muted-foreground)",
 			},
 			rotation: 0,
-			y: 20,
 		},
 	},
 	yAxis: {
@@ -113,14 +117,20 @@ export const defaultOptions: Highcharts.Options = {
 };
 
 type BarChartProps = {
-	options: Highcharts.Options;
+	title: string;
+	data?: TTransactionOverviewResponse;
 };
-
-const VerticalColumnBarChart = ({ options }: BarChartProps) => {
+const chartTitleToTransformer = {
+	"Recurring Revenue": toRecurringRevenueChart,
+	"Recurring Expenses": toRecurringExpensesChart,
+	"Savings": toSavingsChart,
+	"Revenue vs Expenses": toIncomeVsExpensesChart,
+}
+const VerticalColumnBarChart = ({ title,  data}: BarChartProps) => {
+	const {  chartData } = useChartsDataView();
+	const transformer = chartTitleToTransformer[title as keyof typeof chartTitleToTransformer];
 	return (
-	
-			<HighchartsReact highcharts={Highcharts} options={options} />
-	
+			<HighchartsReact highcharts={Highcharts} options={transformer(data ?? chartData)} />
 	);
 };
 

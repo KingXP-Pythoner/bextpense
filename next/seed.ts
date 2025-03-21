@@ -4,6 +4,7 @@ import path from "path";
 
 // Number of transactions to generate
 const NUM_TRANSACTIONS = 30_000;
+const mockUserId = "test-fake-user-id";
 
 // Define Income and Expense categories
 const incomeCategories = [
@@ -23,6 +24,32 @@ const expenseCategories = [
   "transportation", "tourist_activities", "charity", "gifts_expenses", "miscellaneous"
 ];
 
+// Generate categories
+const categories = [
+  ...incomeCategories.map(category => ({
+    id: category,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+    isDeleted: false
+  })),
+  ...expenseCategories.map(category => ({
+    id: category,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+    isDeleted: false
+  }))
+];
+
+// Generate transaction types
+const transactionTypes = [
+  {
+    type: "income"
+  },
+  {
+    type: "expense"
+  }
+];
+
 // Define the date range (from 3 years ago until now)
 const startDate = new Date();
 startDate.setFullYear(startDate.getFullYear() - 5);
@@ -30,9 +57,14 @@ const endDate = new Date();
 
 // Calculate total months between dates
 const monthDiff = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth());
-// Set minimum and maximum transactions per month
-const MIN_TRANSACTIONS_PER_MONTH = 30;
-const MAX_TRANSACTIONS_PER_MONTH = 100;
+
+// Base income configuration (simulating a successful business owner/professional)
+const baseIncome = {
+    salary: 5000, // Regular monthly salary
+    business: 8000, // Base business revenue
+    rental: 2500, // Monthly rental income
+    growth: 0.05 // 5% average growth rate per year
+};
 
 const transactions = [];
 
@@ -44,78 +76,151 @@ for (let m = 0; m <= monthDiff; m++) {
     monthEnd.setMonth(monthEnd.getMonth() + 1);
     monthEnd.setDate(0);
 
-    // Random number of transactions for this month
-    const monthlyTransactions = faker.number.int({ 
-        min: MIN_TRANSACTIONS_PER_MONTH, 
-        max: MAX_TRANSACTIONS_PER_MONTH 
+    // Calculate growth factor based on time passed
+    const yearsPassed = m / 12;
+    const growthMultiplier = Math.pow(1 + baseIncome.growth, yearsPassed);
+
+    // Generate income transactions for this month
+    // Salary (paid on 25th)
+    const salaryDate = new Date(currentDate);
+    salaryDate.setDate(25);
+    transactions.push({
+        id: faker.string.uuid(),
+        userId: mockUserId,
+        title: "Monthly Salary",
+        description: "Regular monthly salary payment",
+        type: "income",
+        categoryId: "salary",
+        amount: baseIncome.salary * growthMultiplier * (0.95 + Math.random() * 0.1), // Small random variation
+        currency: "GBP",
+        transactionDate: salaryDate.getTime(),
+        createdAt: salaryDate.getTime(),
+        updatedAt: salaryDate.getTime()
     });
 
-    // Generate multiple transactions for this month
-    for (let i = 0; i < monthlyTransactions; i++) {
-        const type = faker.helpers.arrayElement(["income", "expense"]);
-        const category = type === "income"
-            ? faker.helpers.arrayElement(incomeCategories)
-            : faker.helpers.arrayElement(expenseCategories);
-
-        // Generate a random date within this month
-        const transactionDate = faker.date.between({ 
-            from: currentDate, 
-            to: monthEnd 
-        });
-
-        const amountRange = type === "income"
-            ? { min: 1000, max: 10000 }
-            : { min: 5, max: 2000 };
-
-        // Simulate user behavior: 80% chance of entering transaction on same day,
-        // 20% chance of entering it 1-5 days later
-        const delayInDays = Math.random() < 0.8 
-            ? 0 
-            : faker.number.int({ min: 1, max: 5 });
-        
-        const createdAt = new Date(transactionDate.getTime() + (delayInDays * 24 * 60 * 60 * 1000));
-        
-        // Simulate occasional updates: 10% chance of having been updated
-        const updatedAt = Math.random() < 0.1
-            ? new Date(createdAt.getTime() + faker.number.int({ min: 1, max: 48 }) * 60 * 60 * 1000)
-            : createdAt;
-
-        const transaction = {
+    // Business revenue (multiple transactions through month)
+    const businessTransactions = faker.number.int({ min: 3, max: 8 });
+    for (let i = 0; i < businessTransactions; i++) {
+        const transactionDate = faker.date.between({ from: currentDate, to: monthEnd });
+        const baseAmount = (baseIncome.business / businessTransactions) * growthMultiplier;
+        transactions.push({
             id: faker.string.uuid(),
-            title: faker.lorem.words(3).substring(0, 124),
-            description: faker.lorem.sentence().substring(0, 256),
-            type: type,
-            category: category,
-            amount: parseFloat(faker.finance.amount({ min: amountRange.min, max: amountRange.max, dec: 2 })),
+            userId: mockUserId,
+            title: faker.helpers.arrayElement([
+                "Client Project Payment",
+                "Consulting Fee",
+                "Service Revenue",
+                "Product Sales"
+            ]),
+            description: faker.lorem.sentence(),
+            type: "income",
+            categoryId: "business_revenue",
+            amount: baseAmount * (0.7 + Math.random() * 0.6), // More variation in business income
             currency: "GBP",
             transactionDate: transactionDate.getTime(),
-            createdAt: createdAt.getTime(),
-            updatedAt: updatedAt.getTime()
-        };
+            createdAt: transactionDate.getTime(),
+            updatedAt: transactionDate.getTime()
+        });
+    }
 
-        transactions.push(transaction);
+    // Rental income (paid on 1st)
+    const rentalDate = new Date(currentDate);
+    rentalDate.setDate(1);
+    transactions.push({
+        id: faker.string.uuid(),
+        userId: mockUserId,
+        title: "Rental Income",
+        description: "Monthly rental payment received",
+        type: "income",
+        categoryId: "rental_income",
+        amount: baseIncome.rental * growthMultiplier,
+        currency: "GBP",
+        transactionDate: rentalDate.getTime(),
+        createdAt: rentalDate.getTime(),
+        updatedAt: rentalDate.getTime()
+    });
+
+    // Occasional bonuses (quarterly)
+    if (m % 3 === 0) {
+        const bonusDate = faker.date.between({ from: currentDate, to: monthEnd });
+        transactions.push({
+            id: faker.string.uuid(),
+            userId: mockUserId,
+            title: "Quarterly Bonus",
+            description: "Quarterly performance bonus",
+            type: "income",
+            categoryId: "bonuses",
+            amount: baseIncome.salary * growthMultiplier * faker.number.float({ min: 0.5, max: 1.5 }),
+            currency: "GBP",
+            transactionDate: bonusDate.getTime(),
+            createdAt: bonusDate.getTime(),
+            updatedAt: bonusDate.getTime()
+        });
+    }
+
+    // Generate expense transactions
+    const monthlyExpenses = faker.number.int({ min: 25, max: 40 });
+    for (let i = 0; i < monthlyExpenses; i++) {
+        const transactionDate = faker.date.between({ from: currentDate, to: monthEnd });
+        const category = faker.helpers.arrayElement(expenseCategories);
+        
+        // Adjust expense amounts based on category
+        let maxAmount = 200; // Default max for misc expenses
+        if (["rent", "mortgage"].includes(category)) {
+            maxAmount = 2000;
+        } else if (["property_taxes", "car_maintenance", "electronics"].includes(category)) {
+            maxAmount = 1000;
+        } else if (["groceries", "utilities", "insurance"].includes(category)) {
+            maxAmount = 500;
+        }
+
+        transactions.push({
+            id: faker.string.uuid(),
+            userId: mockUserId,
+            title: faker.lorem.words(3),
+            description: faker.lorem.sentence(),
+            type: "expense",
+            categoryId: category,
+            amount: faker.number.float({ min: maxAmount * 0.1, max: maxAmount }),
+            currency: "GBP",
+            transactionDate: transactionDate.getTime(),
+            createdAt: transactionDate.getTime(),
+            updatedAt: transactionDate.getTime()
+        });
     }
 }
 
-// Sort transactions by month first, then by year
-transactions.sort((a, b) => {
-    const dateA = new Date(a.transactionDate);
-    const dateB = new Date(b.transactionDate);
-    
-    // Compare months first
-    const monthDiff = dateA.getMonth() - dateB.getMonth();
-    if (monthDiff !== 0) return monthDiff;
-    
-    // If same month, compare years
-    return dateA.getFullYear() - dateB.getFullYear();
-});
+// Sort transactions by date
+transactions.sort((a, b) => a.transactionDate - b.transactionDate);
 
 try {
-  // Use absolute path for file writing
-  const filePath = path.join(process.cwd(), 'transactions.json');
-  fs.writeFileSync(filePath, JSON.stringify(transactions, null, 2));
-  console.log(`Generated ${NUM_TRANSACTIONS} transactions to ${filePath}`);
+    const basePath = path.join(process.cwd(), '..', 'netcore', 'Bextpense', 'Bextpense', 'Infrastructure', 'Data');
+    
+    if (!fs.existsSync(basePath)) {
+        throw new Error('Base path does not exist. Ensure you have not modified the project structure already.');
+    }
+  
+    // Write categories
+    fs.writeFileSync(
+        path.join(basePath, 'categories.json'),
+        JSON.stringify(categories, null, 2)
+    );
+    console.log(`Generated ${categories.length} categories to categories.json`);
+
+    // Write transaction types
+    fs.writeFileSync(
+        path.join(basePath, 'transactionTypes.json'),
+        JSON.stringify(transactionTypes, null, 2)
+    );
+    console.log(`Generated ${transactionTypes.length} transaction types to transactionTypes.json`);
+
+    // Write transactions
+    fs.writeFileSync(
+        path.join(basePath, 'transactions.json'),
+        JSON.stringify(transactions, null, 2)
+    );
+    console.log(`Generated ${transactions.length} transactions to transactions.json`);
 } catch (error) {
-  console.error('Failed to write transactions file:', error);
-  process.exit(1);
+    console.error('Failed to write seed files:', error);
+    process.exit(1);
 }

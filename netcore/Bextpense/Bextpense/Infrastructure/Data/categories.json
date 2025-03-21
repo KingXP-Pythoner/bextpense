@@ -1,0 +1,338 @@
+[
+  {
+    "id": "salary",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "freelance",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "investments",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "business_revenue",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "gifts",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "refunds",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "bonuses",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "rental_income",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "other_income",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "rent",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "mortgage",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "property_taxes",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "home_insurance",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "electricity",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "water",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "gas",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "internet",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "phone_bill",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "groceries",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "restaurants",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "coffee_shops",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "fast_food",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "fuel",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "public_transport",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "car_maintenance",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "parking",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "ride_sharing",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "medical_bills",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "health_insurance",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "gym_membership",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "pharmacy",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "streaming_services",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "movies",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "concerts",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "gaming",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "clothing",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "accessories",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "electronics",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "home_decor",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "courses",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "books",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "subscriptions",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "school_fees",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "credit_card_payments",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "student_loans",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "personal_loans",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "retirement_fund",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "stocks",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "emergency_fund",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "flights",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "hotels",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "transportation",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "tourist_activities",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "charity",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "gifts_expenses",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  },
+  {
+    "id": "miscellaneous",
+    "createdAt": 1742430133186,
+    "updatedAt": 1742430133186,
+    "isDeleted": false
+  }
+]

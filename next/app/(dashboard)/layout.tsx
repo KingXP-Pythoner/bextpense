@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import { RootLayout } from "../../components/shared/root-layout";
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/layouts";
+import { CreateTransactionDialog } from "@/features/transactions";
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 export const metadata: Metadata = {
 	title: "Bextpense Tracker - Dashboard",
 	description: "Dashboard for your Bextpense Tracker account",
@@ -9,7 +11,14 @@ export const metadata: Metadata = {
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<RootLayout>
-			<AppSidebar>{children}</AppSidebar>
+			<NuqsAdapter>
+			<AppSidebar>
+				<div className="w-full flex justify-end max-w-6xl mx-auto">
+					<CreateTransactionDialog />
+				</div>
+				{children}
+				</AppSidebar>
+				</NuqsAdapter>
 		</RootLayout>
 	);
 };
