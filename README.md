@@ -1,7 +1,3 @@
-Below is an enhanced, in‐depth version of the Bextpense documentation. I expanded sections with detailed explanations of architecture, design decisions, security, performance, and more, to serve both new developers and advanced contributors.
-
----
-
 # Bextpense
 
 Bextpense is a comprehensive full-stack expense tracking application designed to empower users with clear insights into their recurring revenue, expenses, and savings. Leveraging modern technologies, Bextpense uses a Next.js frontend for a dynamic, responsive UI and a robust .NET Core backend that ensures scalability, maintainability, and high performance. The application is built following industry best practices and proven design patterns, with a focus on secure, efficient, and modular code.
